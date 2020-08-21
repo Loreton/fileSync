@@ -1,2 +1,3 @@
 # ignore something like sshRemoteTunnel_2020-07-15_154825.zip
-*20??-??-??_*.zip
+# *20??-??-??_*.zip
+# fileSync.zip

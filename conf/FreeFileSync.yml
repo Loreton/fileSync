@@ -2,10 +2,10 @@
 main:
     freefilesync:
         exe: '/mnt/c/Program Files/FreeFileSync/FreeFileSync.exe'
-        wk_path: '/mnt/k/Filu/LnDisk/LnFree/SynchBackup/LnFreeFileSync'
-        dynprofile_dir: ${main.freefilesync.wk_path}/_LnProfiles2/dynProfile
-        xml_setting: ${main.freefilesync.wk_path}/_LnProfiles2/GlobalSettings_clean.xml
-        xml_setting_wk: ${main.freefilesync.wk_path}/_LnProfiles2/GlobalSettings.xml
+        wk_path: '/mnt/k/Filu/LnDisk/LnFree/SynchBackup/LnFileSync'
+        dynprofile_dir: ${main.freefilesync.wk_path}/profiles/dynProfile
+        xml_setting: ${main.freefilesync.wk_path}/profiles/GlobalSettings_clean.xml
+        xml_setting_wk: ${main.freefilesync.wk_path}/profiles/GlobalSettings.xml
         xml_setting_default: 'mnt/c/Users/Loreto/AppData/Roaming/FreeFileSync/GlobalSettings.xml'
 
 servers:
