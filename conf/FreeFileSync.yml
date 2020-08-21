@@ -1,0 +1,111 @@
+############################
+main:
+    freefilesync:
+        exe: '/mnt/c/Program Files/FreeFileSync/FreeFileSync.exe'
+        wk_path: '/mnt/k/Filu/LnDisk/LnFree/SynchBackup/LnFreeFileSync'
+        dynprofile_dir: ${main.freefilesync.wk_path}/_LnProfiles2/dynProfile
+        xml_setting: ${main.freefilesync.wk_path}/_LnProfiles2/GlobalSettings_clean.xml
+        xml_setting_wk: ${main.freefilesync.wk_path}/_LnProfiles2/GlobalSettings.xml
+        xml_setting_default: 'mnt/c/Users/Loreto/AppData/Roaming/FreeFileSync/GlobalSettings.xml'
+
+servers:
+    lnpi31:
+        # options: "|chan=10|zlib|agent"
+        # options1: [chan=10, zlib, agent]
+        options: 'chan=10|zlib|agent'
+        sftpServer: sftp://pi@192.168.1.31:22
+        profileTemplate: "_LnProfiles/Main/@LnTemplate.ffs_gui"
+
+    SilviaPC:
+        sftpServer:
+        OPTIONS:
+        profileTemplate: "_LnProfiles/Main/@LnTemplate.ffs_gui"
+
+############################
+directories:
+    LnFree:
+        exclude:
+            - '/System Volume Information/'
+            - '/$Recycle.Bin/'
+            - '/RECYCLER/'
+            - '/RECYCLED/'
+            - '*/desktop.ini'
+            - '*/thumbs.db'
+            - '*_tmp|*/tmp/|*.pid|*.bak|'
+            - '*.log|*.log.?|*.log.1?|*/log/|'
+            - '*.cache|*/cache.*|*/cache2/|*/cache/|'
+            - '*/DoubleCmd/doublecmd.xml'
+            - '*/DoubleCmd/history.xml'
+            - '*/DoubleCmd/session.ini'
+            - '*/Editors/SublimeText_3/Data/Local'
+            - '*/Executor/scancache.dat'
+            - '*/Kitty/Launcher/*'
+            - '*/Network/Browser/Opera_XXXX'
+            - '*/SublimeText/Data/Backup/*'
+            - '*/SublimeText/Data/Index/*'
+            - '*/SynchBackup/FreeFileSync/_LnProfiles/dynProfile'
+            - '*/uninstall.exe'
+            - '*/uninstall.bmp'
+
+
+    LnDisk:
+        folders:
+            -   GIT-REPO
+            -   Technical-DOC
+            -   Ln-eBooks
+            -   LnSite
+            -   LnStart
+            -   LnFree
+            -   Loreto
+            -   Lesla
+            -   LnPi
+            -   PortableApps
+        exclude:
+            - '/System Volume Information/'
+            - '/$Recycle.Bin/'
+            - '/RECYCLER/'
+            - '/RECYCLED/'
+            - '*/desktop.ini'
+            - '*/thumbs.db'
+            - '*_tmp|*/tmp/|*.pid|*.bak'
+            - '*.log|*.log.?|*.log.1?|*/log'
+            - '*.cache|*/cache.*|*/cache2/|*/cache'
+            - '*/.git/'
+
+        include:
+            - "*"
+
+profiles:
+    LnDisk_LnPi31:
+        source:
+            server:
+            path: '/mnt/k/Filu/LnDisk'
+            options:
+
+        destination:
+            server: ${servers.lnpi31.sftpServer}
+            path: /mnt/Toshiba-1TB_LnDisk/Filu/LnDisk
+            options: ${servers.lnpi31.options}
+
+        folders: ${directories.LnDisk.folders}
+        include: ${directories.LnDisk.include}
+        exclude: ${directories.LnDisk.exclude}
+        template_file: conf/Template.ffs_gui
+        sync_type: Mirror # TwoWay, Mirror, ..
+
+    LnDisk_Filu_C:
+        source:
+            server:
+            path: '/mnt/k/Filu/LnDisk'
+            options:
+
+        destination:
+            server:
+            path: /mnt/c/Filu_C/LnDisk
+            options:
+
+        folders: ${directories.LnDisk.folders}
+        include: ${directories.LnDisk.include}
+        exclude: ${directories.LnDisk.exclude}
+        template_file: conf/Template.ffs_gui
+        sync_type: Mirror # TwoWay, Mirror, ..

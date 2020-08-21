@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FreeFileSync XmlType="GUI" XmlFormat="16">
+    <Compare>
+        <Variant>TimeAndSize</Variant>
+        <Symlinks>Exclude</Symlinks>
+        <IgnoreTimeShift>1</IgnoreTimeShift>
+    </Compare>
+    <Synchronize>
+        <Variant>TwoWay</Variant>
+        <DetectMovedFiles>false</DetectMovedFiles>
+        <DeletionPolicy>Permanent</DeletionPolicy>
+        <VersioningFolder Style="Replace"/>
+    </Synchronize>
+    <Filter>
+        <Include>
+            <Item>/GIT-REPO/</Item>
+            <Item>/PiProd/</Item>
+            <Item>/PiColl/</Item>
+            <Item>/.aMule/</Item>
+            <Item>/.ssh</Item>
+            <Item>/.Loreto</Item>
+            <Item>/.bash_aliases</Item>
+            <Item>/.gitconfig</Item>
+            <Item>/.vimrc</Item>
+        </Include>
+        <Exclude>
+            <Item>*.tmp| *.bak</Item>
+            <Item>*\.git\</Item>
+            <Item>*\thumbs.db</Item>
+            <Item>*.log|*.log.?|*.log.1?</Item>
+            <Item>*.cache|*.log|*_tmp|*.pid|</Item>
+            <Item>*\cache\</Item>
+            <Item>*\cache2\</Item>
+            <Item>*\log\</Item>
+            <Item>*\tmp\</Item>
+            <Item>*\.git\</Item>
+            <Item>/GIT-REPO/</Item>
+        </Exclude>
+        <TimeSpan Type="None">0</TimeSpan>
+        <SizeMin Unit="None">0</SizeMin>
+        <SizeMax Unit="None">0</SizeMax>
+    </Filter>
+    <FolderPairs>
+        <Pair>
+            <Left>sftp://pi@192.168.1.31:22/home/pi|chan=10|agent</Left>
+            <Right>K:/Filu/LnDisk/LnPi/LnPi31_BACKUP_2020-06/home/pi</Right>
+        </Pair>
+    </FolderPairs>
+    <Errors Ignore="false" Retry="0" Delay="5"/>
+    <PostSyncCommand Condition="Completion"/>
+    <LogFolder/>
+    <EmailNotification Condition="Always"/>
+    <Gui>
+        <MiddleGridView>Action</MiddleGridView>
+    </Gui>
+</FreeFileSync>
