@@ -10,16 +10,12 @@ main:
 
 servers:
     lnpi31:
-        # options: "|chan=10|zlib|agent"
-        # options1: [chan=10, zlib, agent]
-        options: 'chan=10|zlib|agent'
         sftpServer: sftp://pi@192.168.1.31:22
-        profileTemplate: "_LnProfiles/Main/@LnTemplate.ffs_gui"
+        options: 'chan=10|zlib|agent'
 
     SilviaPC:
         sftpServer:
-        OPTIONS:
-        profileTemplate: "_LnProfiles/Main/@LnTemplate.ffs_gui"
+        options:
 
 ############################
 directories:
@@ -46,6 +42,7 @@ directories:
             - '*/SynchBackup/FreeFileSync/_LnProfiles/dynProfile'
             - '*/uninstall.exe'
             - '*/uninstall.bmp'
+            - '*/__pycache__/*'
 
 
     LnDisk:
@@ -67,10 +64,11 @@ directories:
             - '/RECYCLED/'
             - '*/desktop.ini'
             - '*/thumbs.db'
+            - '*/__pycache__/*'
             - '*_tmp|*/tmp/|*.pid|*.bak'
             - '*.log|*.log.?|*.log.1?|*/log'
             - '*.cache|*/cache.*|*/cache2/|*/cache'
-            - '*/.git/'
+            # - '*/.git/'
 
         include:
             - "*"

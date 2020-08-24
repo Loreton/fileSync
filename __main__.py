@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 21-08-2020 17.11.24
+# Version ......: 22-08-2020 09.58.20
 #
 # #############################################
 
@@ -52,9 +52,16 @@ if __name__ == '__main__':
         profile=RecursiveNamespace(**dConfig['profiles'][args.name])
 
     else:
-        print()
-        pyaml.p(dConfig, indent=4)
-        print()
+        if args.servers:
+            pyaml.p('-----', dConfig['servers'], indent=4)
+        elif args.directories:
+            pyaml.p('-----', dConfig['directories'], indent=4)
+        elif args.profiles:
+            pyaml.p('-----', dConfig['profiles'], indent=4)
+        else:
+            print()
+            pyaml.p(dConfig, indent=4)
+            print()
         sys.exit()
 
     ''' INCLUDE list '''
