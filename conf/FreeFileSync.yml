@@ -91,7 +91,7 @@ profiles:
         template_file: conf/Template.ffs_gui
         sync_type: Mirror # TwoWay, Mirror, ..
 
-    LnDisk_Filu_C:
+    LnDisk_C:
         source:
             server:
             path: '/mnt/k/Filu/LnDisk'
@@ -99,7 +99,7 @@ profiles:
 
         destination:
             server:
-            path: /mnt/c/Filu_C/LnDisk
+            path: /mnt/c/Filu/LnDisk
             options:
 
         folders: ${directories.LnDisk.folders}

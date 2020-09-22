@@ -2,7 +2,7 @@
 # #############################################
 #
 # updated by ...: Loreto Notarantonio
-# Version ......: 22-08-2020 09.58.20
+# Version ......: 22-09-2020 15.38.27
 #
 # #############################################
 
@@ -110,8 +110,11 @@ if __name__ == '__main__':
             if Path(full_path).is_dir():
                 my_path=wsl_to_win_path(f'{ptr.path}{folder}') # da errore per un path che non esiste
             else:
-
-                sys.exit()
+                print(f'''
+                    path <{full_path}> not exists.
+                    Please create it before to continue'''.replace('  ', ' '))
+                print()
+                sys.exit(1)
 
         if ptr.options: my_path=f'{my_path}|{ptr.options}'
         return my_path
@@ -128,6 +131,8 @@ if __name__ == '__main__':
     my_folders=args.sub_folders if args.sub_folders else profile.folders
 
     for folder_name in my_folders:
+        # if folder_name=='LnPi':
+        #     import pdb; pdb.set_trace() # by Loreto
         stringToBeChanged = {
             'SourcePATH':   prepare_path(profile.source, folder=folder_name),
             'DestPATH':     prepare_path(profile.destination, folder=folder_name),
@@ -149,30 +154,9 @@ if __name__ == '__main__':
         print('  ', line)
 
     if dbg.go:
+        print('Starting....')
         p=subprocess.Popen(CMD, close_fds=True) # no-WAIT
     else:
         print()
         print("     please enter --go to un FreeFileSync")
         print()
-
-
-
-# def runCommand(command):
-#     splitted_cmd=shlex.split(command)
-#     try:
-#         p1=subprocess.run([ffs_exe, _file],
-#                 stdout=subprocess.PIPE,
-#                 stderr=subprocess.STDOUT,
-#                 universal_newlines=True,
-#                 check=True)
-#         print('    rcode: ', p1.returncode)
-#         print('    result:', p1.stdout)
-
-#     except subprocess.CalledProcessError as e:
-#         print(f"""ERROR:
-#                   f"command:   {command}",
-#                   f"rcode:     {e.returncode}",
-#                   f"stdout:    {e.stdout.strip()}",
-#                   f"exception: {str(e)}""")
-
-
